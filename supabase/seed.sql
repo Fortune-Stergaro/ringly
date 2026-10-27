@@ -1,0 +1,2 @@
+-- Optional: after signing up your first user, promote them to platform admin:
+-- update public.profiles set is_platform_admin = true where id = '<your-user-uuid>';
