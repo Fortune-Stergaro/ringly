@@ -6,13 +6,13 @@ create extension if not exists pg_net with schema extensions;
 select cron.schedule(
   'ringly-process-jobs', '* * * * *',
   $$ select net.http_post(
-       url := 'https://YOUR-APP-DOMAIN/api/cron/process-jobs',
-       headers := jsonb_build_object('Authorization', 'Bearer YOUR_CRON_SECRET', 'Content-Type', 'application/json'),
+       url := 'https://ringly.vercel.app/api/cron/process-jobs',
+       headers := jsonb_build_object('Authorization', 'Bearer ', 'Content-Type', 'application/json'),
        body := '{}'::jsonb, timeout_milliseconds := 55000) $$);
 
 select cron.schedule(
   'ringly-extend-occurrences', '15 2 * * *',
   $$ select net.http_post(
-       url := 'https://YOUR-APP-DOMAIN/api/cron/extend-occurrences',
-       headers := jsonb_build_object('Authorization', 'Bearer YOUR_CRON_SECRET', 'Content-Type', 'application/json'),
+       url := 'https://https://ringly.vercel.app/api/cron/extend-occurrences',
+       headers := jsonb_build_object('Authorization', 'Bearer ', 'Content-Type', 'application/json'),
        body := '{}'::jsonb, timeout_milliseconds := 55000) $$);
